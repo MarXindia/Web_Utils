@@ -1,10 +1,27 @@
+import json
+
 from flask import Flask, request ,  render_template
 
-app = Flask(__name__)
+app = Flask('3d asset')
 
-@app.route('/Index')
-def hello():
-    return "<p> Hello World </p>"
+@app.route('/submit', methods = ['POST'])
+def submit():
+    data = {
+        'name': request.form['name'],
+        'polycount': request.form['polycount'],
+        'id': request.form['id'],
+        'user': request.form['user']
+    }
+    with open("asset_dat_.json",'w') as json_file:
+        json.dump(data,json_file)
+
+    return "Data saved correctly"
+
+@app.route('/')
+def index():
+    return render_template('form.html')
 
 
-app.run()
+
+if __name__ == "__main__":
+    app.run(debug=True)
