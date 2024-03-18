@@ -1,7 +1,8 @@
 
 """
 Data is fetched using Coin Market Cap API but, since  free API service is being used the rate limit is slow and
-data isn't updated frequently, refresh time is 15 seconds. Data is cached by streamlit in order to
+data isn't updated frequently, refresh time is 15 seconds. Data is cached by streamlit using decorator st.cache
+Even though slow price changes are reflected in the Price change section, if price increases state is marked increased and vice-versa
 
 
 """
